@@ -4,16 +4,10 @@ import java.awt.Graphics2D;
 
 import javax.swing.JFrame;
 
-public class MyFrame extends JFrame{
-
-	MyPanel panel;
+public class GameFrame extends JFrame{
 	
-	MyFrame(){
-		
-		panel = new MyPanel();
-		
-		this.add(panel);
-		this.pack();
+	GameFrame(){
+
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setTitle("Life");
