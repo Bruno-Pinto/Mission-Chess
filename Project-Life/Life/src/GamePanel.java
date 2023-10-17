@@ -3,8 +3,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Panel;
-
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel{
@@ -28,15 +26,11 @@ public class GamePanel extends JPanel{
 			
 			g2D.drawLine(0, i*Life.uSize - s, Life.panelWidth, i*Life.uSize - s);
 		}
-
 	}
 	
 	public void paintRect(GamePanel panel, int x, int y, int w) {
-		
 		Graphics g = panel.getGraphics();
-		Graphics2D g2D= (Graphics2D) g;
-		g2D.setBackground(Color.green);
+		Graphics2D g2D = (Graphics2D) g;
 		g2D.fillRect(x, y, w, w);
-
 	}
 }
