@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.Random;
@@ -10,7 +11,7 @@ public class Life {
 	static int rows = 40; // 15x36 for Glider
 	static int cols = 60;
 	static int w = 15;
-	static int gap = 1;
+	static int gap = 2;
 	static int uSize = w + gap;
 	static int panelWidth = cols*uSize-gap;
 	static int panelHeight = rows*uSize-gap;
@@ -20,7 +21,7 @@ public class Life {
 	static int[][] grid2 = new int[rows][cols];
 	static int flip = 0;
 	static Timer timer = new Timer();
-	static long delay = 100;
+	static long delay = 150;
 
 	//setup the game
 	public static void main(String[] args) throws InterruptedException {
@@ -157,6 +158,7 @@ public class Life {
 	public static void paintSquare(GamePanel panel, int x, int y, int w) {
 		Graphics g = panel.getGraphics();
 		Graphics2D g2D = (Graphics2D) g;
+		g2D.setColor(Color.black);
 		g2D.fillRect(x, y, w, w);
 	}
 	
