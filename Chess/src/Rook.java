@@ -1,13 +1,22 @@
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+
 public class Rook extends Figure{
 
     boolean moved = false;
 
-    Rook(int x, int y, Color color) {
+    Rook(int x, int y, Side side) {
         this.posX = x;
         this.posY = y;
-        this.color = color;
+        this.side = side;
         this.type = Type.Rook;
         this.character = 'R';
+        try {
+            this.icon = ImageIO.read(new File(Chess.iconFilePath.concat(type.toString() + side + ".png")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void move(int x, int y) {
