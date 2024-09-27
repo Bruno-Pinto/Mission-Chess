@@ -4,8 +4,6 @@ import java.io.IOException;
 
 public class Rook extends Figure{
 
-    boolean moved = false;
-
     Rook(int x, int y, Side side) {
         this.posX = x;
         this.posY = y;

@@ -20,24 +20,32 @@ public class Chess {
     static Side winningSide;
     static String iconFilePath = "C:/Users/bruno/git/My-Projects/Chess/Figures/";
 
+
     public static void main(String[] args){
 
 
         setup();
-        printBoardToConsole();
-        drawBoard();
+//        printBoardToConsole();
         panel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 int x = e.getX() / squareSize;
-                int y = e.getY() / squareSize;
+                int y = (boardSize - e.getY()) / squareSize; //make y start from bottom left
 
                 if (selectedFigure == null) {
                     selectedFigure = Board[x][y];
                     selectedFigure.setStatus(Status.highlighted);
-                } else {
-                    List<Move> possibleMoves = selectedFigure.getMoves();
-                    for (Move move : possibleMoves) {
-                        if (move.getX() == x && move.getY() == y) {
+                    System.out.println(selectedFigure.type + " " + selectedFigure.side);
+                }
+                else if(Board[x][y].getColor() == selectedFigure.getColor()){
+                    selectedFigure.setStatus(Status.visible);
+                    selectedFigure = Board[x][y];
+                    selectedFigure.setStatus(Status.highlighted);
+                    System.out.println(selectedFigure.type + " " + selectedFigure.side);
+                }
+                else {
+                    List<Field> possibleMoves = selectedFigure.getMoves();
+                    for (Field field : possibleMoves) {
+                        if (field.getX() == x && field.getY() == y) {
                             if (Board[x][y] != null) {
                                 Board[x][y].take();
                             }
@@ -50,6 +58,9 @@ public class Chess {
 
     }
 
+    /**
+     * Sets up the default board layout and draws it on the panel.
+     */
     public static void setup(){
         for(int x=0; x<8; x++) {
             for(int y=0; y<8; y++) {
@@ -96,37 +107,7 @@ public class Chess {
                 }
             }
         }
-    }
-
-    /**
-     * Draws the board on the JPanel.
-     * If an icon is missing, the character is used.
-     */
-    public static void drawBoard(){
-
-        Graphics g = panel.getGraphics();
-        Graphics2D g2D = (Graphics2D)g;
-        g2D.setFont(new Font("Arial", Font.BOLD, 80));
-
-        for(Figure[] row : Board){
-            for(Figure f : row){
-                if(f==null){continue;}
-                if(f.side == Side.Black){
-                    g2D.setColor(Color.black);
-                }
-                else{
-                    g2D.setColor(Color.white);
-                }
-                if(f.icon != null){
-                    g2D.drawImage(f.icon,f.posX * squareSize, boardSize - (f.posY +1) * squareSize, squareSize, squareSize, panel );
-                    System.out.println("Drawing Image " + f.type + " " + f.side);
-                    continue;
-                }
-                if(f.side == Side.White){g2D.setColor(Color.white);}
-                else{g2D.setColor(Color.BLACK);}
-                g2D.drawString(String.valueOf(f.character), f.posX * squareSize + squareSize/6, (boardSize - f.posY * squareSize) - gap);
-            }
-        }
+        panel.drawBoard(panel.getGraphics(), boardSize, squareSize, gap);
     }
 
     /**

@@ -26,37 +26,38 @@ public class Pawn extends Figure {
         super.move(x, y);
         moved = true;
     }
-    /*
+
     @Override
-    public List<Move> getMoves() {
+    public List<Field> getMoves() {
+        List<Field> possibleMoves = super.getMoves();
         if (side == Side.White) {
-            moves.add(new Move(posX, posY+1,this));
+            possibleMoves.add(new Field(posX, posY+1));
 
             if(Chess.validPos(posX+1, posY+1) && Board[posX+1][posY+1] != null && Board[posX+1][posY+1].getColor() != side) {
-                moves.add(new Move(posX+1, posY+1, this));
+                possibleMoves.add(new Field(posX+1, posY+1));
             }
             if(Chess.validPos(posX-1, posY+1) && Board[posX-1][posY+1] != null && Board[posX-1][posY+1].getColor() != side) {
-                moves.put(posX-1,posY+1);
+                possibleMoves.add(new Field(posX-1,posY+1));
             }
             if(!moved) {
-                moves.put(posX, posY+2);
+                possibleMoves.add(new Field(posX, posY+2));
             }
         }
         else {
-            moves.put(posX, posY-1);
+            possibleMoves.add(new Field(posX, posY-1));
 
             if(Chess.validPos(posX+1, posY-1) && Board[posX+1][posY-1] != null && Board[posX+1][posY-1].getColor() != side) {
-                moves.put(posX+1,posY-1);
+                possibleMoves.add(new Field(posX+1,posY-1));
             }
             if(Chess.validPos(posX-1, posY-1) && Board[posX-1][posY-1] != null && Board[posX-1][posY-1].getColor() != side) {
-                moves.put(posX-1,posY-1);
+                possibleMoves.add(new Field(posX-1,posY-1));
             }
             if(!moved) {
-                moves.put(posX, posY-2);
+                possibleMoves.add(new Field(posX, posY-2));
             }
         }
 
-        return moves;
+        return possibleMoves;
     }
-     */
+
 }

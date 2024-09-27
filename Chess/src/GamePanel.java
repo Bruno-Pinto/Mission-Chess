@@ -31,4 +31,30 @@ public class GamePanel extends JPanel implements Runnable{
             }
         }
     }
+
+    public void drawBoard(Graphics g, int boardSize, int squareSize, int gap){
+
+        Graphics2D g2D = (Graphics2D)g;
+        g2D.setFont(new Font("Arial", Font.BOLD, 80));
+
+        for(Figure[] row : Chess.Board){
+            for(Figure f : row){
+                if(f==null){continue;}
+                if(f.side == Side.Black){
+                    g2D.setColor(Color.black);
+                }
+                else{
+                    g2D.setColor(Color.white);
+                }
+                if(f.icon != null){
+                    g2D.drawImage(f.icon,f.posX * Chess.squareSize, boardSize - (f.posY +1) * squareSize, squareSize, squareSize, this );
+                    System.out.println("Drawing Image " + f.type + " " + f.side);
+                    continue;
+                }
+                if(f.side == Side.White){g2D.setColor(Color.white);}
+                else{g2D.setColor(Color.BLACK);}
+                g2D.drawString(String.valueOf(f.character), f.posX * squareSize + squareSize/6, (boardSize - f.posY * squareSize) - gap);
+            }
+        }
+    }
 }

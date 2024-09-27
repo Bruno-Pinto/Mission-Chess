@@ -1,13 +1,17 @@
-public class Move {
+public class Field {
 
     public int x;
     public int y;
     Figure f;
 
-    public Move(int x, int y, Figure f) {
+    /**
+     * for usage as a possible field to move to
+     * @param x
+     * @param y
+     */
+    public Field(int x, int y) {
         this.x = x;
         this.y = y;
-        this.f = f;
     }
 
     public int getX(){return x;}
