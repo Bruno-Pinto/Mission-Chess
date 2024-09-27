@@ -5,7 +5,7 @@ public class Field {
     Figure f;
 
     /**
-     * for usage as a possible field to move to
+     * For usage as a possible field to move to.
      * @param x
      * @param y
      */
