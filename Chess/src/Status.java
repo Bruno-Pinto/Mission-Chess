@@ -1,1 +1,0 @@
-public enum Status{visible, highlighted, invisible}

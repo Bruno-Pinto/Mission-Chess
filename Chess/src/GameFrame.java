@@ -3,8 +3,8 @@ import java.awt.*;
 
 public class GameFrame extends JFrame{
 
-    GameFrame() {
-        this.add(Chess.panel);
+    GameFrame(GamePanel panel) {
+        this.add(panel);
         this.pack();
         this.setDefaultCloseOperation(3);
         this.setResizable(false);
