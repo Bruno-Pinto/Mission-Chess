@@ -14,6 +14,8 @@ public class GamePanel extends JPanel{
     static int gap;
     private Piece[][] board;
     static Color translucentBlack = new Color(0,0,0, 70);
+//    static Color darkSquaresColor = Color.getHSBColor(0.08f, 0.7f, 0.3f); //Dark Brown
+    static Color darkSquaresColor = Color.LIGHT_GRAY;
     private List<Field> highlightedFields;
 
     GamePanel(int size, Piece[][] board) {
@@ -62,7 +64,7 @@ public class GamePanel extends JPanel{
             for (int y = 0; y < 8; y++) {
                 //"Black" square
                 if ((x + y) % 2 == 0) {
-                    G2D.setColor(Color.getHSBColor(0.08f, 0.7f, 0.3f));
+                    G2D.setColor(darkSquaresColor);
                     G2D.fillRect(x * squareSize, y * squareSize, squareSize, squareSize);
                 }
                 //White square
@@ -87,7 +89,7 @@ public class GamePanel extends JPanel{
 
             //Black Square
             if ((x + y) % 2 == 0) {
-                G2D.setColor(Color.getHSBColor(0.08f, 0.7f, 0.3f));
+                G2D.setColor(darkSquaresColor);
                 G2D.fillRect(x * squareSize, y * squareSize, squareSize, squareSize);
             }
             //White square
